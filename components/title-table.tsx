@@ -151,7 +151,7 @@ const titles: Title[] = [
 ];
 
 const INITIAL_VISIBLE_COLUMNS = ["vin", "state", "titledTo"];
-const PAGINATION_INTERVALS = [ 15, 25, 50 ];
+const PAGINATION_INTERVALS = [15, 25, 50];
 
 const capitalizeFirstLetter = (s: string) => { return s ? s.charAt(0).toUpperCase() + s.slice(1).toLowerCase() : ""; }
 
@@ -229,7 +229,7 @@ const TitleTable = () => {
         const cellValue = title[columnKey];
 
         switch (columnKey) {
-            case 'vin': 
+            case 'vin':
                 return (
                     <>
                         <p className="text-base capitalize">{cellValue}</p>
@@ -397,17 +397,15 @@ const TitleTable = () => {
         <Table
             isCompact
             removeWrapper
+            isHeaderSticky
             aria-label="Table of Titles"
-            bottomContent={bottomContent}
-            bottomContentPlacement="outside"
-            classNames={{
-                wrapper: "max-h-[382px]",
-            }}
             selectedKeys={selectedKeys}
             selectionMode="multiple"
             sortDescriptor={sortDescriptor}
             topContent={topContent}
             topContentPlacement="outside"
+            bottomContent={bottomContent}
+            bottomContentPlacement="outside"
             onSelectionChange={() => { }} // FIXME
             onSortChange={() => { }} // FIXME
         >
