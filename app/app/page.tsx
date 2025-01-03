@@ -1,24 +1,19 @@
 import "@/styles/app.css"
 
-import TitleTable from "@/components/title-table";
-import { ThemeSwitch } from "@/components/theme-switch";
-import ThemeToggle from "@/components/theme-toggle";
+import TitleTable from "@/components/app/title-table";
+import Sidebar from "@/components/app/sidebar";
+import Navbar from "@/components/app/navbar";
 
 const App = () => {
-
 
     return (
         <div id="app-container">
 
-            <nav className="bg-content1">
-                <ThemeToggle />
-            </nav>
+            <Navbar />
 
-            <div id="sidebar" className="bg-content1">
+            <Sidebar />
 
-            </div>
-
-            <main className="p-10">
+            <main className="p-10 bg-background">
                 <TitleTable />
             </main>
 

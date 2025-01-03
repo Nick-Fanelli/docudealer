@@ -7,20 +7,15 @@ import {
     TableColumn,
     TableRow,
     TableCell,
-    getKeyValue,
-    Pagination,
-    Input,
-    Dropdown,
-    DropdownTrigger,
-    Button,
-    DropdownItem,
-    DropdownMenu,
-    SharedSelection,
-    Chip
-} from "@nextui-org/react";
+} from "@nextui-org/table";
+
+import { Pagination } from "@nextui-org/pagination";
+import { Button } from "@nextui-org/button";
+import { Dropdown, DropdownTrigger, DropdownItem, DropdownMenu } from "@nextui-org/dropdown";
 
 import { useCallback, useLayoutEffect, useMemo, useState } from "react";
-import { ChevronDownIcon, PlusIcon, SearchIcon } from "./icons";
+import { ChevronDownIcon, PlusIcon, SearchIcon } from "../icons";
+import { SharedSelection } from "@nextui-org/react";
 
 const columns = [
     { name: "VIN", uid: "vin", sortable: true },
