@@ -1,6 +1,8 @@
 import "@/styles/app.css"
 
 import TitleTable from "@/components/title-table";
+import { ThemeSwitch } from "@/components/theme-switch";
+import ThemeToggle from "@/components/theme-toggle";
 
 const App = () => {
 
@@ -9,7 +11,7 @@ const App = () => {
         <div id="app-container">
 
             <nav className="bg-content1">
-
+                <ThemeToggle />
             </nav>
 
             <div id="sidebar" className="bg-content1">
