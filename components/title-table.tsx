@@ -51,98 +51,13 @@ const titles: Title[] = [
     },
 
     {
-        vin: "1HD4LE213KC418172",
+        vin: "1HD4LE213KC418176",
         state: "New Jersey",
         titledTo: "Nick's Custom Inc."
     },
 
     {
-        vin: "1HD4LE213KC418172",
-        state: "New Jersey",
-        titledTo: "Nick's Custom Inc."
-    },
-    {
-        vin: "1HD4LE213KC418172",
-        state: "New Jersey",
-        titledTo: "Nick's Custom Inc."
-    },
-    {
-        vin: "1HD4LE213KC418172",
-        state: "New Jersey",
-        titledTo: "Nick's Custom Inc."
-    },
-    {
-        vin: "1HD4LE213KC418172",
-        state: "New Jersey",
-        titledTo: "Nick's Custom Inc."
-    },
-    {
-        vin: "1HD4LE213KC418172",
-        state: "New Jersey",
-        titledTo: "Nick's Custom Inc."
-    },
-    {
-        vin: "1HD4LE213KC418172",
-        state: "New Jersey",
-        titledTo: "Nick's Custom Inc."
-    },
-    {
-        vin: "1HD4LE213KC418172",
-        state: "New Jersey",
-        titledTo: "Nick's Custom Inc."
-    },
-    {
-        vin: "1HD4LE213KC418172",
-        state: "New Jersey",
-        titledTo: "Nick's Custom Inc."
-    },
-    {
-        vin: "1HD4LE213KC418172",
-        state: "New Jersey",
-        titledTo: "Nick's Custom Inc."
-    },
-    {
-        vin: "1HD4LE213KC418172",
-        state: "New Jersey",
-        titledTo: "Nick's Custom Inc."
-    },
-    {
-        vin: "1HD4LE213KC418172",
-        state: "New Jersey",
-        titledTo: "Nick's Custom Inc."
-    },
-    {
-        vin: "1HD4LE213KC418172",
-        state: "New Jersey",
-        titledTo: "Nick's Custom Inc."
-    },
-    {
-        vin: "1HD4LE213KC418172",
-        state: "New Jersey",
-        titledTo: "Nick's Custom Inc."
-    },
-    {
-        vin: "1HD4LE213KC418172",
-        state: "New Jersey",
-        titledTo: "Nick's Custom Inc."
-    },
-    {
-        vin: "1HD4LE213KC418172",
-        state: "New Jersey",
-        titledTo: "Nick's Custom Inc."
-    },
-    {
-        vin: "1HD4LE213KC418172",
-        state: "New Jersey",
-        titledTo: "Nick's Custom Inc."
-    },
-    {
-        vin: "1HD4LE213KC418172",
-        state: "New Jersey",
-        titledTo: "Nick's Custom Inc."
-    },
-    {
-        vin: "1HD4LE213KC418172",
+        vin: "1HD4LE213KC418177",
         state: "New Jersey",
         titledTo: "Nick's Custom Inc."
     },
@@ -378,7 +293,7 @@ const TitleTable = () => {
                             >
                                 {
                                     PAGINATION_INTERVALS.map((interval) => (
-                                        <option value={interval}>{interval}</option>
+                                        <option value={interval} key={interval}>{interval}</option>
                                     ))
                                 }
                             </select>
@@ -395,8 +310,6 @@ const TitleTable = () => {
 
     return (
         <Table
-            isCompact
-            removeWrapper
             isHeaderSticky
             aria-label="Table of Titles"
             selectedKeys={selectedKeys}
