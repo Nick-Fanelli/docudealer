@@ -334,7 +334,12 @@ const TitleTable = () => {
                 )}
             </TableHeader>
 
-            <TableBody emptyContent={"No users found"} items={sortedItems}>
+            <TableBody emptyContent={ // TODO: MAKE WORK
+                <div className="flex flex-col items-center justify-center gap-5">
+                    <p>No titles found...</p>
+                    <Button className="bg-foreground-600 text-background" endContent={<PlusIcon />} size="sm">Add New Title</Button>
+                </div>
+            } items={sortedItems}>
                 {(item) => (
                     <TableRow key={item.vin}>
                         {(columnKey) => <TableCell>{renderCell(item, columnKey as keyof Title)}</TableCell>}
