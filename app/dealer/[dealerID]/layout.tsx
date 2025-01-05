@@ -1,6 +1,5 @@
 import "@/styles/dealer-page.css"
 
-import TitleTable from "@/components/dealer/title-table";
 import Sidebar from "@/components/dealer/sidebar";
 import Navbar from "@/components/dealer/navbar";
 
