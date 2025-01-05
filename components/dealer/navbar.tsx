@@ -3,7 +3,7 @@ import ThemeToggle from "../theme-toggle";
 import SearchBar from "./search-bar";
 import { Avatar } from "@nextui-org/avatar";
 
-const Navbar = () => {
+const Navbar = async () => {
 
     return (
         <nav className="bg-foreground dark:bg-content1 grid grid-cols-3 px-5">
@@ -11,6 +11,7 @@ const Navbar = () => {
             <div className="flex items-center justify-start">
                 <h1 className="text-xl font-semibold text-background dark:text-foreground">LOGO</h1>
                 <p className="text-default-400 ml-2">NJ Title Buddy</p>
+                <p>{}</p>
             </div>
 
             <div className="flex items-center justify-center">

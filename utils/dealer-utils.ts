@@ -1,0 +1,1 @@
+export const extrapolateLocalDealerPath = (dealerID: string, pathname: string) : string => { return pathname.replace(`/dealer/${dealerID}`, ""); }
