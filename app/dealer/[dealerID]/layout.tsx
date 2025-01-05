@@ -19,7 +19,7 @@ const DealerPage = async ({ children, params } : { children: React.ReactNode, pa
     return (
         <div id="app-container">
 
-            <Navbar />
+            <Navbar dealerID={dealerID} />
 
             <Sidebar dealerID={dealerID} />
 
