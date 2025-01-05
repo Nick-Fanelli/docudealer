@@ -1,4 +1,3 @@
-import { User } from "@nextui-org/user"
 import { Button } from "@nextui-org/button"
 import ThemeToggle from "../theme-toggle";
 import SearchBar from "./search-bar";
@@ -19,21 +18,20 @@ const Navbar = () => {
             </div>
 
             <div className="flex items-center justify-end">
+
                 <ThemeToggle />
 
-                <Button variant="light">
+                <Button variant="light" className="flex justify-between px-3 py-2 ml-5">
+
+                    <div className="text-left mr-2">
+                        <h1 className="font-medium text-medium">John Doe</h1>
+                        <p className="font-medium text-sm text-default-400">Dealership Name</p>
+                    </div>
 
                     <Avatar />
 
                 </Button>
 
-                {/* <User
-                    avatarProps={{
-                        src: "https://i.pravatar.cc/150?u=a04258114e29026702d",
-                    }}
-                    description="Dealership Name"
-                    name="Jane Doe"
-                /> */}
             </div>
 
         </nav>

@@ -1,7 +1,8 @@
 "use client";
 
-import { Input, Kbd } from "@nextui-org/react";
+import { Input } from "@nextui-org/input";
 import { SearchIcon } from "../icons";
+import { Kbd } from "@nextui-org/kbd";
 
 const SearchBar = () => {
 

@@ -1,9 +1,9 @@
 "use client";
 
-import { Switch } from "@nextui-org/react";
 import { useTheme } from "next-themes";
 import { MoonFilledIcon, SunFilledIcon } from "./icons";
 import { useLayoutEffect, useState } from "react";
+import { Switch } from "@nextui-org/switch";
 
 const ThemeToggle = () => {
 

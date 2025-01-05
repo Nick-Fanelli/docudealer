@@ -1,9 +1,9 @@
 "use client";
 
-import { Divider, Listbox, ListboxItem } from "@nextui-org/react";
 import { ChevronRightIcon, HomeIcon, TitleIcon, TransactionIcon } from "../icons";
 import { useState } from "react";
 import IconWrapper from "../icon-wrapper";
+import { Listbox, ListboxItem } from "@nextui-org/listbox";
 
 const ItemCounter = ({ number }: { number: number | null }) => (
     <div className="flex items-center gap-1 text-default-400">
