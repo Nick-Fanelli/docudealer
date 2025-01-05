@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { ChevronRightIcon, HomeIcon, TitleIcon, TransactionIcon } from "../icons";
-import { extrapolateLocalDealerPath } from "@/utils/dealer-utils";
+import { extrapolateLocalDealerPath } from "@/lib/dealer-utils";
 import Link from "next/link";
 
 const ItemCounter = ({ number }: { number: number | null }) => (
