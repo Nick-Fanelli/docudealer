@@ -7,6 +7,9 @@ import { Providers } from "./global-providers";
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 
+import { SessionProvider } from "next-auth/react"
+import { auth } from "@/auth";
+
 export const metadata: Metadata = {
     title: {
         default: siteConfig.name,
@@ -25,7 +28,10 @@ export const viewport: Viewport = {
     ],
 };
 
-export default function RootLayout({ children } : { children: React.ReactNode }) {
+export default async function RootLayout({ children } : { children: React.ReactNode }) {
+
+    const session = await auth();
+
     return (
         <html lang="en" suppressHydrationWarning>
             <head>
@@ -39,7 +45,9 @@ export default function RootLayout({ children } : { children: React.ReactNode })
                 )}
             >
                 <Providers themeProps={{ attribute: "class", defaultTheme: "dark", }}>
-                    {children}
+                    <SessionProvider session={session}>
+                        {children}
+                    </SessionProvider>
                 </Providers>
             </body>
         </html>

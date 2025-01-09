@@ -1,15 +1,14 @@
-import { redirect } from "next/navigation";
+import { Button } from "@nextui-org/button";
+import Link from "next/link";
 
 const HomePage = async () => {
 
-    // const session = await auth();
-
-    // if(!session) {
-    //     redirect("/api/auth/signin");
-    // }
-
     return (
-        null
+        <main className="w-screen h-screen flex justify-center items-center">
+            <div>
+                <Link href={"/signin"}><Button type="submit">Sign In</Button></Link>
+            </div>
+        </main>
     )
 
 }
