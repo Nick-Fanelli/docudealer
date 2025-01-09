@@ -1,8 +1,8 @@
 import { Button } from "@nextui-org/button"
 import ThemeToggle from "../theme-toggle";
 import SearchBar from "./search-bar";
-import { Avatar } from "@nextui-org/avatar";
 import Link from "next/link";
+import UserButton from "./user-button";
 
 type Props = {
 
@@ -19,7 +19,7 @@ const Navbar = async (props: Props) => {
                     <Button variant="light">
                         <h1 className="text-xl font-semibold">LOGO</h1>
                         <p className="text-default-400 ml-2">NJ Title Buddy</p>
-                        <p>{}</p>
+                        <p>{ }</p>
                     </Button>
                 </Link>
             </div>
@@ -31,17 +31,7 @@ const Navbar = async (props: Props) => {
             <div className="flex items-center justify-end">
 
                 <ThemeToggle />
-
-                <Button variant="light" className="flex justify-between px-3 py-2 ml-5">
-
-                    <div className="text-left mr-2 text-background dark:text-foreground">
-                        <h1 className="font-medium text-medium">John Doe</h1>
-                        <p className="font-medium text-sm text-default-400">Dealership Name</p>
-                    </div>
-
-                    <Avatar />
-
-                </Button>
+                <UserButton />
 
             </div>
 

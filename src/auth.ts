@@ -3,6 +3,7 @@ import Github from "next-auth/providers/github"
 
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "./lib/db";
+import { revalidatePath } from "next/cache";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
     adapter: PrismaAdapter(prisma),
@@ -21,6 +22,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         })
     ],
     pages: {
-        signIn: "/signin"
+        signIn: "/auth/signin"
     }
 });
