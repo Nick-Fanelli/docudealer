@@ -8,5 +8,4 @@ export const authRoutes : string[] = [
 ];
 
 export const apiAuthPrefix = "/api/auth";
-
-export const defaultAuthenticatedUserRedirect = "/dealer/example"; 
+export const defaultAuthenticatedUserRedirect = "/dealer"; 

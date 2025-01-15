@@ -1,3 +1,7 @@
+:root {
+    --navbar-height: 55px;
+}
+
 #app-container {
 
     position: relative;
@@ -15,7 +19,6 @@
 
 }
 
-
 #app-container > nav { 
     
     position: fixed;
@@ -24,9 +27,9 @@
     left: 0;
     right: 0;
 
-    height:     60px;
-    min-height: 60px;
-    max-height: 60px;
+    height:     var(--navbar-height);
+    min-height: var(--navbar-height);
+    max-height: var(--navbar-height);
     
 }
 
@@ -34,7 +37,7 @@
     
     position: fixed;
 
-    top: 60px;
+    top: var(--navbar-height);
     left: 0;
     bottom: 0;
 
@@ -48,7 +51,7 @@
     
     position: absolute;
 
-    top: 60px;
+    top: var(--navbar-height);
     left: 250px;
     right: 0;
     bottom: 0;

@@ -17,11 +17,10 @@ const UserButton = () => {
     return (
         <Dropdown placement="bottom-start">
             <DropdownTrigger>
-                <Button variant="light" className="flex justify-between px-3 py-2 ml-5">
+                <Button variant="light" className="flex justify-between px-3 py-2">
 
                     <div className="text-left mr-2 text-background dark:text-foreground">
-                        <h1 className="font-medium text-medium">{session.data.user.name}</h1>
-                        <p className="font-medium text-sm text-default-400">Dealership Name</p>
+                        <h1 className="text-sm">{session.data.user.name}</h1>
                     </div>
 
                     <Avatar />

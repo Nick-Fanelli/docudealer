@@ -28,12 +28,11 @@ const SidebarLink = (props: SidebarLinkProps) => {
 
     return (
         <Link href={`/dealer/${props.dealerID}${props.targetPage}`}>
-            <li className={`w-full h-10 hover:bg-content3 cursor-pointer flex items-center justify-between rounded-md ${isSelected ? "bg-content4" : "bg-transparent"}`}>
+            <li className={`w-full py-4 h-6 hover:bg-content3 cursor-pointer flex items-center justify-between rounded-md ${isSelected ? "bg-content4" : "bg-transparent"}`}>
                 <div className="flex items-center pl-2">
                     {props.icon}
-                    <h2 className="ml-3">{props.title}</h2>
+                    <h2 className="ml-3 text-sm">{props.title}</h2>
                 </div>
-                <ItemCounter number={null} />
             </li>
         </Link>
     );

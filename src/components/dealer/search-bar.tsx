@@ -13,7 +13,7 @@ const SearchBar = () => {
             placeholder={"Search..."}
             startContent={<SearchIcon size={18} />}
             endContent={
-                <Kbd keys={["command"]}>K</Kbd>
+                <Kbd keys={["command"]} className="pointer-events-none">K</Kbd>
             }
         />
     )

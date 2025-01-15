@@ -24,7 +24,7 @@ export const ChevronRightIcon = (props: any) => {
 
 
 export const MoonFilledIcon = ({
-    size = 24,
+    size = 20,
     width,
     height,
     ...props
@@ -46,7 +46,7 @@ export const MoonFilledIcon = ({
 );
 
 export const SunFilledIcon = ({
-    size = 24,
+    size = 20,
     width,
     height,
     ...props
