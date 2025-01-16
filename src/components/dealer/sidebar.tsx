@@ -53,7 +53,7 @@ const Sidebar = (props: Props) => {
     const currentPage = '/' + (localDealerPathParts.length >= 2 ? localDealerPathParts[1] : '');
 
     return (
-        <div id="sidebar" className="bg-content2 pt-2 px-2">
+        <div id="sidebar" className="bg-content2 pt-2 px-2 w-[275px]">
 
             <ul>
                 <SidebarLink title={"Home"} icon={<HomeIcon />} dealerID={props.dealerID} targetPage={"/"} currentPage={currentPage} />

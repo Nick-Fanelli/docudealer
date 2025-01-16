@@ -1,71 +1,107 @@
-import { signIn } from "@/auth";
-import TextDivider from "@/components/text-divider";
+"use client";
+
 import { Button } from "@nextui-org/button";
 import { Divider } from "@nextui-org/divider";
 import { Form } from "@nextui-org/form";
 import { Input } from "@nextui-org/input";
 import Link from "next/link";
+import { useState } from "react";
+import { Icon } from "@iconify/react"
+import { Checkbox } from "@nextui-org/checkbox";
+import { signInWithGithub } from "@/actions/auth.actions";
 
 const Login = () => {
+
+    const [isVisible, setIsVisible] = useState<boolean>(false);
+
+    const toggleVisibility = () => setIsVisible(!isVisible);
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+    }
 
     return (
         <main className="w-screen h-screen flex items-center justify-center">
 
-            <div className="bg-content1 w-[600px] max-w-screen max-h-screen py-10 rounded-xl shadow-2xl">
-                <Form
-                    className="items-center"
-                    validationBehavior="native"
-                >
-
-                    <div className="max-w-md w-full">
-
-                        <div className="mb-8">
-                            <h1 className="text-3xl font-bold text-center pb-2">Authenticate</h1>
-                            <p className="text-center text-lg font-light text-default-500">Sign in to manage your dealership securely</p>
-                        </div>
-
-                        <div className="mb-5 flex flex-col gap-5">
-                            <Input
-                                isRequired
-                                label="Email"
-                                labelPlacement="outside"
-                                name="email"
-                                type="email"
-                                placeholder="Enter your email address"
-                            />
-
-                            <Input
-                                isRequired
-                                label="Password"
-                                labelPlacement="outside"
-                                name="password"
-                                type="password"
-                                placeholder="Enter your password"
-                            />
-                        </div>
-
-                        <div className="mb-10 mt-8">
-                            <Button className="w-full mb-5" color="primary" type="submit">Sign In with Credentials</Button>
-                            <p className="text-sm text-default-600 text-center">Forgot your password? <Link href={"#"} className="text-sm text-blue-500 pl-[2px]">Reset Password</Link></p>
-                        </div>
-
+            <div className="flex w-[550px] p-20 rounded-xl items-center justify-center bg-content1">
+                <div className="flex w-full max-w-sm flex-col gap-4 rounded-large">
+                    <div className="flex flex-col items-center pb-6">
+                        <div className="w-[60px] h-[60px] bg-blue-300 mb-2 rounded-xl"></div>
+                        <p className="text-xl font-medium mb-1">Authenticate</p>
+                        <p className="text-small text-default-500">NJ Title Buddy</p>
                     </div>
-
-                </Form>
-
-                <TextDivider>Or</TextDivider>
-
-                <div className="mt-10 px-10">
-                    <Form action={async () => {
-                        "use server";
-                        await signIn("github");
-                    }}>
-                        <Button className="w-full" type="submit">Sign In with GitHub</Button>
+                    <Form className="flex flex-col gap-3" validationBehavior="native" onSubmit={handleSubmit}>
+                        <Input
+                            isRequired
+                            label="Email Address"
+                            name="email"
+                            placeholder="Enter your email"
+                            type="email"
+                            variant="bordered"
+                        />
+                        <Input
+                            isRequired
+                            endContent={
+                                <button type="button" onClick={toggleVisibility}>
+                                    {isVisible ? (
+                                        <Icon
+                                            className="pointer-events-none text-2xl text-default-400"
+                                            icon="solar:eye-closed-linear"
+                                        />
+                                    ) : (
+                                        <Icon
+                                            className="pointer-events-none text-2xl text-default-400"
+                                            icon="solar:eye-bold"
+                                        />
+                                    )}
+                                </button>
+                            }
+                            label="Password"
+                            name="password"
+                            placeholder="Enter your password"
+                            type={isVisible ? "text" : "password"}
+                            variant="bordered"
+                        />
+                        <div className="flex w-full items-center justify-between px-1 py-2">
+                            <Checkbox name="remember" size="sm">
+                                Remember me
+                            </Checkbox>
+                            <Link className="text-default-500" href="#">
+                                Forgot password?
+                            </Link>
+                        </div>
+                        <Button className="w-full" color="primary" type="submit">
+                            Sign In
+                        </Button>
                     </Form>
+                    <div className="flex items-center gap-4 py-2">
+                        <Divider className="flex-1" />
+                        <p className="shrink-0 text-tiny text-default-500">OR</p>
+                        <Divider className="flex-1" />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                        <Button
+                            startContent={<Icon icon="flat-color-icons:google" width={24} />}
+                            variant="bordered"
+                        >
+                            Continue with Google
+                        </Button>
+                        <Button
+                            startContent={<Icon className="text-default-500" icon="fe:github" width={24} />}
+                            variant="bordered"
+                            onPress={signInWithGithub}
+                        >
+                            Continue with Github
+                        </Button>
+                    </div>
+                    <p className="text-center text-small">
+                        Need to create an account?&nbsp;
+                        <Link href="#">
+                            Sign Up
+                        </Link>
+                    </p>
                 </div>
             </div>
-
-
 
         </main>
     )

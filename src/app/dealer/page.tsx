@@ -5,6 +5,7 @@ import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card"
 import Link from "next/link"
 import ThemeToggle from "@/components/theme-toggle"
 import { Divider } from "@nextui-org/divider"
+import { PlusIcon } from "@/components/icons"
 
 type DealershipCardProps = {
 
@@ -16,8 +17,8 @@ type DealershipCardProps = {
 const DealershipCard = (props: DealershipCardProps) => {
     return (
         <Link href={`/dealer/${props.dealershipID}`}>
-            <Button className="h-auto w-full p-0 m-0 bg-content1 border-none shadow-2xl">
-                <Card className="w-full h-full bg-transparent">
+            <Button variant="light" className="h-[140px] w-[350px] p-0 m-0 shadow-sm dark:shadow-2xl">
+                <Card className="w-full h-full bg-content1 rounded-none hover:bg-content2">
                     <CardHeader className="pb-0 pt-4 px-4 flex-col items-start">
                         <h1 className="font-bold text-large">Example Dealership</h1>
                         <div className="flex items-center mt-2">
@@ -30,7 +31,7 @@ const DealershipCard = (props: DealershipCardProps) => {
                     </CardBody>
 
                     <div className="flex px-2">
-                        <Divider className=""/>
+                        <Divider className="" />
                     </div>
 
                     <CardFooter>
@@ -46,32 +47,28 @@ const DealershipCard = (props: DealershipCardProps) => {
 const DealerPage = () => {
 
     return (
-        <div className="grid w-screen h-screen overflow-hidden grid-rows-[60px_1fr] grid-cols-1">
-            <nav className="bg-foreground dark:bg-content1 flex items-center justify-between">
-                <div className="flex items-center">
-                    <Link href={`/dealer`} className="flex items-center justify-start text-background dark:text-foreground">
-                        <Button variant="light">
-                            <h1 className="text-xl font-semibold text-background dark:text-foreground">LOGO</h1>
-                            <p className="text-default-400 ml-2">NJ Title Buddy</p>
-                            <p>{}</p>
-                        </Button>
-                    </Link>
-                </div>
-                <div className="flex">
-                    <ThemeToggle />
-                    <UserButton />
-                </div>
-            </nav>
+        <div className="overflow-y-scroll h-full w-full p-10">
+            <div className="flex flex-wrap gap-10">
+                <DealershipCard dealershipName="Example Dealership" dealershipID="example" />
+                <DealershipCard dealershipName="Example Dealership" dealershipID="example" />
+                <DealershipCard dealershipName="Example Dealership" dealershipID="example" />
 
-            <div className="p-8">
-                <div className="grid grid-cols-4 gap-10">
-                    <DealershipCard dealershipName="Example Dealership" dealershipID="example" />
-                </div>
+
+                <Link href={`/dealer/new`}>
+                    <Button variant="light" className="h-[140px] w-[350px] p-0 m-0">
+                        <Card className="w-full h-full bg-content1 rounded-none hover:bg-content2">
+                            <CardBody className="px-4 py-3 flex items-center justify-center">
+                                <div className="flex flex-col items-center">
+                                    <PlusIcon size={48} />
+                                    <p className="text-medium">Create Dealership</p>
+                                </div>
+                            </CardBody>
+                        </Card>
+                    </Button>
+                </Link>
 
             </div>
-
         </div>
-
     )
 
 }

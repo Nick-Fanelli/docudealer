@@ -15,7 +15,7 @@ import { Dropdown, DropdownTrigger, DropdownItem, DropdownMenu } from "@nextui-o
 
 import { useCallback, useLayoutEffect, useMemo, useState } from "react";
 import { ChevronDownIcon, PlusIcon, SearchIcon } from "../icons";
-import { SharedSelection } from "@nextui-org/react";
+import { SharedSelection } from "@nextui-org/system";
 
 const columns = [
     { name: "VIN", uid: "vin", sortable: true },
@@ -47,12 +47,6 @@ const titles: Title[] = [
 
     {
         vin: "1HD4LE213KC418176",
-        state: "New Jersey",
-        titledTo: "Nick's Custom Inc."
-    },
-
-    {
-        vin: "1HD4LE213KC418177",
         state: "New Jersey",
         titledTo: "Nick's Custom Inc."
     },

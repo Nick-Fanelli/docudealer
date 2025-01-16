@@ -1,7 +1,4 @@
-import "@/styles/dealer-page.css"
-
 import Sidebar from "@/components/dealer/sidebar";
-import Navbar from "@/components/dealer/navbar";
 
 // TODO: METADATA
 
@@ -16,13 +13,11 @@ const DealerPage = async ({ children, params } : { children: React.ReactNode, pa
     const { dealerID } = await params;
 
     return (
-        <div id="app-container">
-
-            <Navbar dealerID={dealerID} />
+        <div id="app-container" className="flex w-screen h-full overflow-hidden realtive">
 
             <Sidebar dealerID={dealerID} />
 
-            <main className="p-10 bg-background">
+            <main className="p-10 bg-background h-full w-full overflow-y-auto">
                 {children}
             </main>
 
