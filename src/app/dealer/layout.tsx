@@ -14,7 +14,7 @@ const DealerPageLayout = ({ children } : { children: React.ReactNode }) => {
                     <Link href={`/dealer`} className="flex items-center justify-start text-background dark:text-foreground">
                         <Button variant="light">
                             <h1 className="text-xl font-semibold text-background dark:text-foreground">LOGO</h1>
-                            <p className="text-default-400 ml-2">NJ Title Buddy</p>
+                            <p className="text-default-400 ml-2">DocuDealer</p>
                         </Button>
                     </Link>
                 </div>

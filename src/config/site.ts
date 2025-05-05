@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "NJ Title Buddy",
+  name: "DocuDealer",
   description: "", // TODO
   navItems: [
     {

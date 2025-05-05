@@ -28,7 +28,7 @@ const Login = () => {
                     <div className="flex flex-col items-center pb-6">
                         <div className="w-[60px] h-[60px] bg-blue-300 mb-2 rounded-xl"></div>
                         <p className="text-xl font-medium mb-1">Authenticate</p>
-                        <p className="text-small text-default-500">NJ Title Buddy</p>
+                        <p className="text-small text-default-500">DocuDealer</p>
                     </div>
                     <Form className="flex flex-col gap-3" validationBehavior="native" onSubmit={handleSubmit}>
                         <Input

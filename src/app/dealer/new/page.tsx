@@ -123,7 +123,7 @@ const NewDealershipPage = () => {
                 </div>
 
                 <Checkbox name="agree" size="sm" isRequired>
-                    <p>I <Link href={"#"}>agree and read the terms</Link> and state I have the authority to create this dealership with NJ Title Buddy</p>
+                    <p>I <Link href={"#"}>agree and read the terms</Link> and state I have the authority to create this dealership with DocuDealer</p>
                 </Checkbox>
 
                 <Button
