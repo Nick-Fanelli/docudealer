@@ -87,7 +87,11 @@ model Authenticator {
 model Dealership {
 
     id              String  @id @default(cuid())
+    
     name            String
+    licenseNumber   String
+    stateLicensed   String
+    zipCode         String    
 
     ownerId         String
     owner           User    @relation("OwnedDealerships", fields: [ownerId], references: [id], onDelete: Cascade)

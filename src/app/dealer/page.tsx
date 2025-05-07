@@ -55,9 +55,9 @@ const DealerPage = () => {
     return (
         <div className="overflow-y-scroll h-full w-full p-10">
             <div className="flex flex-wrap gap-10">
-                <DealershipCard dealershipName="Example Dealership with Long Name" dealershipID="12345N" dealershipURL="example-dealership" isOwner />
-                <DealershipCard dealershipName="Example Dealership" dealershipID="12345N" dealershipURL="example-dealership" isOwner />
-                <DealershipCard dealershipName="Example Dealership" dealershipID="12345N" dealershipURL="example-dealership" />
+                {/* <DealershipCard dealershipName="Example Dealership with Long Name" dealershipID="12345N" dealershipURL="example-dealership" isOwner /> */}
+                {/* <DealershipCard dealershipName="Example Dealership" dealershipID="12345N" dealershipURL="example-dealership" isOwner /> */}
+                {/* <DealershipCard dealershipName="Example Dealership" dealershipID="12345N" dealershipURL="example-dealership" /> */}
 
                 <Link href={`/dealer/new`}>
                     <Button variant="light" className="h-[200px] w-[350px] p-0 m-0">

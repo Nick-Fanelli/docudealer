@@ -1,38 +1,71 @@
 "use client";
 
+import { createDealership } from "@/actions/dealer.actions";
 import { ChevronRightIcon } from "@/components/icons";
+import { Select, SelectItem } from "@heroui/select";
 import { Button } from "@nextui-org/button";
 import { Checkbox } from "@nextui-org/checkbox";
-import { Divider } from "@nextui-org/divider";
 import { Form } from "@nextui-org/form";
 import { Input } from "@nextui-org/input";
 import Link from "next/link";
-import { ChangeEvent, useCallback, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 
-const convertDealershipNameToURL = (name: string) => {
-
-    name = name.replaceAll(/[^a-zA-Z0-9 ]/g, '');
-    name = name.toLowerCase();
-    name = name.replaceAll(/\s+/g, '-');
-
-    return name;
-
-}
+export const states = [
+    { key: "AL", label: "Alabama" },
+    { key: "AK", label: "Alaska" },
+    { key: "AZ", label: "Arizona" },
+    { key: "AR", label: "Arkansas" },
+    { key: "CA", label: "California" },
+    { key: "CO", label: "Colorado" },
+    { key: "CT", label: "Connecticut" },
+    { key: "DE", label: "Delaware" },
+    { key: "FL", label: "Florida" },
+    { key: "GA", label: "Georgia" },
+    { key: "HI", label: "Hawaii" },
+    { key: "ID", label: "Idaho" },
+    { key: "IL", label: "Illinois" },
+    { key: "IN", label: "Indiana" },
+    { key: "IA", label: "Iowa" },
+    { key: "KS", label: "Kansas" },
+    { key: "KY", label: "Kentucky" },
+    { key: "LA", label: "Louisiana" },
+    { key: "ME", label: "Maine" },
+    { key: "MD", label: "Maryland" },
+    { key: "MA", label: "Massachusetts" },
+    { key: "MI", label: "Michigan" },
+    { key: "MN", label: "Minnesota" },
+    { key: "MS", label: "Mississippi" },
+    { key: "MO", label: "Missouri" },
+    { key: "MT", label: "Montana" },
+    { key: "NE", label: "Nebraska" },
+    { key: "NV", label: "Nevada" },
+    { key: "NH", label: "New Hampshire" },
+    { key: "NJ", label: "New Jersey" },
+    { key: "NM", label: "New Mexico" },
+    { key: "NY", label: "New York" },
+    { key: "NC", label: "North Carolina" },
+    { key: "ND", label: "North Dakota" },
+    { key: "OH", label: "Ohio" },
+    { key: "OK", label: "Oklahoma" },
+    { key: "OR", label: "Oregon" },
+    { key: "PA", label: "Pennsylvania" },
+    { key: "RI", label: "Rhode Island" },
+    { key: "SC", label: "South Carolina" },
+    { key: "SD", label: "South Dakota" },
+    { key: "TN", label: "Tennessee" },
+    { key: "TX", label: "Texas" },
+    { key: "UT", label: "Utah" },
+    { key: "VT", label: "Vermont" },
+    { key: "VA", label: "Virginia" },
+    { key: "WA", label: "Washington" },
+    { key: "WV", label: "West Virginia" },
+    { key: "WI", label: "Wisconsin" },
+    { key: "WY", label: "Wyoming" },
+];
 
 const NewDealershipPage = () => {
 
-    const [dealershipURL, setDealershipURL] = useState<string>("");
-
-    const dealershipURLRef = useRef<HTMLInputElement>(null);
-
-    const onModifyName = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-
-        if (!dealershipURLRef.current)
-            return;
-
-        setDealershipURL(convertDealershipNameToURL(e.target.value));
-
-    }, [dealershipURLRef.current]);
+    const router = useRouter();
 
     return (
         <div className="flex items-center justify-center h-full w-full">
@@ -40,6 +73,37 @@ const NewDealershipPage = () => {
             <Form
                 className="bg-content1 dark:bg-content1 max-w-[90%] w-[800px] p-10 rounded-xl shadow-md flex justify-between"
                 validationBehavior="native"
+                onSubmit={async (e) => {
+
+                    e.preventDefault();
+
+                    const formData = new FormData(e.currentTarget);
+
+                    if (formData == null) { // TODO: ERROR HANDLE
+                        console.error("Unexpected null form data");
+                        return;
+                    }
+
+                    const dealershipName = formData.get("dealership-name")?.toString().trim();
+                    const licenseNumber = formData.get("licenseNo")?.toString().trim().toUpperCase();
+                    const stateLicensed = formData.get("state")?.toString().trim().toUpperCase();
+
+                    let zipCode = formData.get("zip")?.toString().trim();
+
+                    if (!dealershipName || !licenseNumber || !stateLicensed || !zipCode) { // TODO: ERROR Handle
+                        console.error("Unexpected error");
+                        return;
+                    }
+
+                    if (zipCode.split("-").length > 1) {
+                        zipCode = zipCode.split("-")[0];
+                    }
+
+                    await createDealership(dealershipName, licenseNumber, stateLicensed, zipCode);
+
+                    router.push("/dealer");
+
+                }}
             >
 
                 <div className="w-full">
@@ -55,69 +119,55 @@ const NewDealershipPage = () => {
                             mainWrapper: "bg-red-100",
                         }}
                         className="mb-5"
-                        onChange={onModifyName}
                     />
 
                     <Input
                         isRequired
-                        label="Dealership URL"
-                        name="dealership-url"
-                        placeholder=""
+                        label="Dealer License Number"
+                        name="licenseNo"
+                        placeholder="Eg. 12345N"
                         type="text"
                         classNames={{
-                            mainWrapper: "bg-red-100",
-                            input: "!pl-[2px]"
+                            mainWrapper: "bg-red-100"
                         }}
-                        className="mb-3 text-default-600"
-                        startContent={
-                            <p>@</p>
-                        }
-                        ref={dealershipURLRef}
-                        value={dealershipURL}
-                        onValueChange={setDealershipURL}
-
-
-                        pattern="[0-9a-zA-Z-]+"
-                        errorMessage={({ validationDetails, validationErrors }) => {
-                            if (validationDetails.patternMismatch) {
-                                return "Dealership URL must only contain letters, numbers and dashes."
-                            }
-
-                            return validationErrors;
-                        }}
+                        className="mb-3"
                     />
 
-                    <div className="flex gap-3">
+                    <div className="flex gap-3 my-5">
+
+                        <Select
+                            isRequired
+                            name="state"
+                            label="Select State Licensed"
+                            placeholder="Select State"
+                        >
+                            {
+                                states.map(state => (
+                                    <SelectItem key={state.key}>{state.label}</SelectItem>
+                                ))
+                            }
+                        </Select>
+
                         <Input
                             isRequired
-                            label="NJMVC Delaer License Number"
-                            name="njmvc-id"
-                            placeholder="Eg. 12345N"
-                            type="text"
+                            label="Zip Code"
+                            name="zip"
+                            placeholder="Select Zip Code"
+                            type="string"
                             classNames={{
                                 mainWrapper: "bg-red-100"
                             }}
                             className="mb-3"
-                            pattern="[0-9]{5}[NU]"
+                            pattern="[0-9]{5}(-[0-9]{4})?"
                             errorMessage={({ validationDetails, validationErrors }) => {
                                 if (validationDetails.patternMismatch) {
-                                    return "NJMVC Dealership License Number (Wall ID) must be in the format of five numbers followed by either N or U. This is issued by NJMVC."
+                                    return "Please enter valid zip code eg. 91234 or 91234-3012"
                                 }
 
                                 return validationErrors;
                             }}
                         />
 
-                        <Input
-                            label="Corporate Code (optional)"
-                            name="corp-code"
-                            placeholder="Eg. 123456789123456"
-                            type="text"
-                            classNames={{
-                                mainWrapper: "bg-red-100"
-                            }}
-                            className="mb-3"
-                        />
                     </div>
 
                 </div>
