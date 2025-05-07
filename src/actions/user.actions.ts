@@ -32,3 +32,24 @@ export const getSessionUser = async () : Promise<User> => {
     return user;
 
 }
+
+export const getUserPreviewOfEngagedDealerships = async () => {
+
+    const user = await getSessionUser();
+
+    const dealerships = await prisma.dealership.findMany({
+
+        where: { ownerId: user.id },
+
+        select: {
+            id: true,
+            name: true,
+            licenseNumber: true,
+            stateLicensed: true
+        }
+
+    });
+
+    return dealerships;
+
+} 

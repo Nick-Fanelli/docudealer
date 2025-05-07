@@ -3,27 +3,30 @@ import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card"
 import Link from "next/link"
 import { Divider } from "@nextui-org/divider"
 import { CrownIcon, PlusIcon } from "@/components/icons"
+import { getUserPreviewOfEngagedDealerships } from "@/actions/user.actions"
 
 type DealershipCardProps = {
 
+    id: string
     dealershipName: string
-    dealershipID: string
-    dealershipURL: string
+    licenseNumber: string
+    stateLicensed: string
+
     isOwner?: boolean
 
 }
 
 const DealershipCard = (props: DealershipCardProps) => {
     return (
-        <Link href={`/dealer/${props.dealershipID}`}>
+        <Link href={`/dealer/${props.id}`}>
             <Button variant="light" className="h-[200px] w-[350px] p-0 m-0 shadow-sm dark:shadow-2xl">
                 <Card className="w-full h-full bg-content1 rounded-none hover:bg-content2">
                     <CardHeader className="pb-0 pt-4 px-4 flex-col items-start grid grid-cols-[1fr_20px]">
                         <div className="w-full text-wrap text-left">
                             <h1 className="font-bold text-large">
-                                {props.dealershipName} <span className="font-lgiht text-default-400">({props.dealershipID})</span>
+                                {props.dealershipName} <span className="font-lgiht text-default-400">({props.stateLicensed})</span>
                             </h1>
-                            <p className="text-default-400">{props.dealershipURL}</p>
+                            <p className="text-default-400">{props.licenseNumber}</p>
                         </div>
 
                         {
@@ -50,14 +53,22 @@ const DealershipCard = (props: DealershipCardProps) => {
     )
 }
 
-const DealerPage = () => {
+const DealerPage = async () => {
+
+    const dealerships = await getUserPreviewOfEngagedDealerships();
+
+    console.log(dealerships);
 
     return (
         <div className="overflow-y-scroll h-full w-full p-10">
             <div className="flex flex-wrap gap-10">
-                {/* <DealershipCard dealershipName="Example Dealership with Long Name" dealershipID="12345N" dealershipURL="example-dealership" isOwner /> */}
-                {/* <DealershipCard dealershipName="Example Dealership" dealershipID="12345N" dealershipURL="example-dealership" isOwner /> */}
-                {/* <DealershipCard dealershipName="Example Dealership" dealershipID="12345N" dealershipURL="example-dealership" /> */}
+
+                {
+                    dealerships.map(dealership => (
+                        <DealershipCard id={dealership.id} dealershipName={dealership.name} licenseNumber={dealership.licenseNumber} stateLicensed={dealership.stateLicensed} isOwner />
+                    ))
+                    
+                }
 
                 <Link href={`/dealer/new`}>
                     <Button variant="light" className="h-[200px] w-[350px] p-0 m-0">
