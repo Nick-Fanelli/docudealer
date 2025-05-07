@@ -93,7 +93,21 @@ model Dealership {
     stateLicensed   String
     zipCode         String    
 
+    titles          Title[] @relation("Titles")
+
     ownerId         String
     owner           User    @relation("OwnedDealerships", fields: [ownerId], references: [id], onDelete: Cascade)
+
+}
+
+model Title {
+
+    id              String @id @default(cuid())
+
+    vin             String
+    state           String
+
+    dealershipId    String
+    dealership      Dealership  @relation("Titles", fields: [dealershipId], references: [id], onDelete: Cascade)
 
 }

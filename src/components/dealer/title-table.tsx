@@ -16,6 +16,7 @@ import { Dropdown, DropdownTrigger, DropdownItem, DropdownMenu } from "@nextui-o
 import { useCallback, useLayoutEffect, useMemo, useState } from "react";
 import { ChevronDownIcon, PlusIcon, SearchIcon } from "../icons";
 import { SharedSelection } from "@nextui-org/system";
+import Link from "next/link";
 
 const columns = [
     { name: "VIN", uid: "vin", sortable: true },
@@ -227,9 +228,11 @@ const TitleTable = () => {
                                 ))}
                             </DropdownMenu>
                         </Dropdown>
-                        <Button className="bg-foreground text-background" endContent={<PlusIcon />} size="sm">
-                            Add New
-                        </Button>
+                        <Link href="titles/new">
+                            <Button className="bg-foreground text-background" endContent={<PlusIcon />} size="sm">
+                                Add New
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             </div>
