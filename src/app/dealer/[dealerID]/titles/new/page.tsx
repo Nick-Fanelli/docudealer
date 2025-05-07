@@ -23,6 +23,7 @@ const NewTitlePage = () => {
             >
 
                 <div className="w-full">
+
                     <h1 className="font-medium text-2xl text-center mb-8">Create Title</h1>
 
                 </div>

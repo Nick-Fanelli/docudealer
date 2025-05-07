@@ -1,6 +1,6 @@
 import { auth } from "@/auth"
 import { NextAuthRequest } from "next-auth/lib"
-import { apiAuthPrefix, authRoutes, defaultAuthenticatedUserRedirect, publicRoutes } from "./routes";
+import { authRoutes, defaultAuthenticatedUserRedirect, publicRoutes } from "./routes";
 import { NextResponse } from "next/server";
 
 export default auth((req: NextAuthRequest) => {

@@ -6,6 +6,7 @@ datasource db {
 
 generator client {
     provider = "prisma-client-js"
+    output = "../../node_modules/@prisma/client"
 }
 
 model User {
@@ -93,21 +94,48 @@ model Dealership {
     stateLicensed   String
     zipCode         String    
 
-    titles          Title[] @relation("Titles")
+    units           Unit[] @relation("Units")
 
     ownerId         String
     owner           User    @relation("OwnedDealerships", fields: [ownerId], references: [id], onDelete: Cascade)
 
 }
 
-model Title {
+enum TitleStatus {
+
+    CLEAN
+    SALVAGE
+    REBUILT
+    JUNK
+    FLOOD
+    LEMON
+
+}
+
+enum MileageStatus {
+
+    ACTUAL
+    NON_ACTUAL
+    EXCEED_MECHANICAL
+
+}
+
+model Unit {
 
     id              String @id @default(cuid())
 
     vin             String
     state           String
+    status          TitleStatus
+
+    year            Int
+    make            String
+    model           String
+
+    mileage         Int
+    mileageStatus   MileageStatus
 
     dealershipId    String
-    dealership      Dealership  @relation("Titles", fields: [dealershipId], references: [id], onDelete: Cascade)
+    dealership      Dealership  @relation("Units", fields: [dealershipId], references: [id], onDelete: Cascade)
 
 }

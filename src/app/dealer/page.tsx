@@ -57,11 +57,9 @@ const DealerPage = async () => {
 
     const dealerships = await getUserPreviewOfEngagedDealerships();
 
-    console.log(dealerships);
-
     return (
-        <div className="overflow-y-scroll h-full w-full p-10">
-            <div className="flex flex-wrap gap-10">
+        <div className="overflow-y-scroll h-full w-full p-10" key="dealer-page">
+            <div className="flex flex-wrap gap-10" key="dealer-page">
 
                 {
                     dealerships.map(dealership => (
